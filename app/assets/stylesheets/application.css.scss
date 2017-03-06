@@ -50,8 +50,21 @@ h1, h2, h3 {
 
 .navbar-brand {
     font-family: "Montserrat", "sans-serif";
-    font-weight: 600;
+    font-weight: 700;
 }
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: white;
+    border: 2px solid white;
+    &:hover, &:focus {
+        background-color: #00d2ff;
+    }
+}
+
 
 // Homepage styles
 .home-callout {
