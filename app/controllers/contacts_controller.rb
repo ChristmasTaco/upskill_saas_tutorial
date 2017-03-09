@@ -11,9 +11,14 @@ class ContactsController < ApplicationController
         # 'contact_params' is a function that is called (outlined below) that says that we will securely save the entered data into the db
         @contact = Contact.new(contact_params)
         if @contact.save
-            redirect_to new_contact_path, notice: "Form successfully submitted!"
+            # Setting a specific message (flash) when the submission was successful
+            flash[:success] = "Submission Successful"
+            redirect_to new_contact_path
         else
-            redirect_to new_contact_path, notice: "Error occurred. Please try again."
+            # Setting up the flash to show any errors that are incurred by concatenating them with a ', '
+            # 'full_messages' function creates nice error messages from the raw 'errors' function that can then be joined
+            flash[:error] = @contact.errors.full_messages.join(", ")
+            redirect_to new_contact_path
         end
     end
     
