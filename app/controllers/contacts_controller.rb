@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
     
     def create
         # updating the @contact instance variable with the entered parameters (each user's information) to be saved to the db
-        # 'contact_params' is a function that is called (outlined below) that says that we will securely save the entered data into the db
+        # 'contact_params' is a method that is called (outlined below) that says that we will securely save the entered data into the db
         @contact = Contact.new(contact_params)
         if @contact.save
             # Setting a specific message (flash) when the submission was successful
@@ -16,8 +16,9 @@ class ContactsController < ApplicationController
             redirect_to new_contact_path
         else
             # Setting up the flash to show any errors that are incurred by concatenating them with a ', '
-            # 'full_messages' function creates nice error messages from the raw 'errors' function that can then be joined
-            flash[:error] = @contact.errors.full_messages.join(", ")
+            # 'errors' method generates raw errors to be displayed when the '@contact.save' method was not successful
+            # 'full_messages' method creates nice error messages from the raw 'errors' method that can then be joined
+            flash[:danger] = @contact.errors.full_messages.join(", ")
             redirect_to new_contact_path
         end
     end
