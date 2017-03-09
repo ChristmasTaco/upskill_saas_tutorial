@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
     def new
+        # This code is run when the /contacts/new page is loaded
         # Creating a new instance variable for each user's information in the system's memory, to be used later
         # The form needs to identify all the fields as an object even before it has to use them - preparing a blank object
         @contact = Contact.new
