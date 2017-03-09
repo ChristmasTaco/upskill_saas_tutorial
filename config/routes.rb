@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     # Creates all CRUD routes for Contacts rather than having to write a line for every permutation, ie get 'contacts/new'
     # Also offers a bunch of routes that can be seen using $ rails routes
     resources :contacts
+    get 'contact-us', to: 'contacts#new'
 end
