@@ -12,13 +12,13 @@ class ContactsController < ApplicationController
         @contact = Contact.new(contact_params)
         if @contact.save
             # Setting a specific message (flash) when the submission was successful
-            flash[:success] = "Submission Successful"
+            flash[:success] = ["Submission Successful"]
             redirect_to new_contact_path
         else
             # Setting up the flash to show any errors that are incurred by concatenating them with a ', '
             # 'errors' method generates raw errors to be displayed when the '@contact.save' method was not successful
             # 'full_messages' method creates nice error messages from the raw 'errors' method that can then be joined
-            flash[:danger] = @contact.errors.full_messages.join(", ")
+            flash[:danger] = @contact.errors.full_messages
             redirect_to new_contact_path
         end
     end
