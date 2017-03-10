@@ -11,6 +11,15 @@ class ContactsController < ApplicationController
         # 'contact_params' is a method that is called (outlined below) that says that we will securely save the entered data into the db
         @contact = Contact.new(contact_params)
         if @contact.save
+            # In order to send the ContactMailer email, we need to lift the parameter values for our instance variables
+            # From below, we are grabbing :name, :email, and :comments (renamed to body) to use in our 'contact_email' method
+            name = params[:contact][:name]
+            email = params[:contact][:email]
+            body = params[:contact][:comments]
+            
+            # Call the 'contact_email' method from the contact_mailer.rb file with the above variables, and .deliver it
+            ContactMailer.contact_email(name, email, body).deliver
+            
             # Setting a specific message (flash) when the submission was successful
             flash[:success] = ["Submission Successful"]
             redirect_to new_contact_path
