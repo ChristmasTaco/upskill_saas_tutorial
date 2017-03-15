@@ -1,11 +1,12 @@
 class ContactMailer < ActionMailer::Base
-    default to: 'chrislosacco13@gmail.com'
+    default from: 'chrislosacco13@gmail.com'
     
+    # Sends an email using the name, email, and comments entered in the new contact form
     def contact_email(name, email, body)
         @name = name
         @email = email
         @body = body
-        
-        mail(from: email, subject: 'Contact Form Message')
+        mail(to: email, subject: 'Thanks for reaching out!')
     end
 end
+

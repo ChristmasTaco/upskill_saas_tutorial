@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Adding figaro to the application to handle environmental variables
+gem 'figaro'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.0'

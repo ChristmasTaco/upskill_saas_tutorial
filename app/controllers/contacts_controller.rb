@@ -17,7 +17,7 @@ class ContactsController < ApplicationController
             email = params[:contact][:email]
             body = params[:contact][:comments]
             
-            # Call the 'contact_email' method from the contact_mailer.rb file with the above variables, and .deliver it
+            # Calls the 'contact_email' method from the contact_mailer.rb file with the above variables, and .deliver it
             ContactMailer.contact_email(name, email, body).deliver
             
             # Setting a specific message (flash) when the submission was successful

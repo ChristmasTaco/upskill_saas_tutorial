@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
-    <body>
-        <p>You have received a message from the site's contact form, from
-        <%= "#{ @name }, #{ @email }." %></p>
-        <p><%= @body %></p>
-    </body>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for signing up, <%= @name %>!</h1>
+    <p>We received your comments and email address, as listed below:</p>
+    <div class="container">
+        <div class="well">
+            <p>Email: </p><%= @email %>
+            <p>Comments: </p><%= @body %>
+        </div>
+    </div>
+    <p>Thanks for joining and have a great day! Now sign in and do
+awesome things!</p>
+  </body>
 </html>
