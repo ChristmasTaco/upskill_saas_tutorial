@@ -27,9 +27,14 @@
         <div class="collapse navbar-collapse" id="main-nav-collapse">
           <div class="nav navbar-nav navbar-right">
             <ul class="nav navbar-nav navbar-right">  
-              <li><%= link_to "Log In", user_session_path %></li>
-              <li><%= link_to "Sign Up", new_user_registration_path%></li>
-              
+              <!--if statement to handle conditional logout button-->
+              'method' required for anything other than 
+              <% if user_signed_in? %>
+                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
+              <% else %>
+                <li><%= link_to "Log In", user_session_path %></li>
+                <li><%= link_to "Sign Up", new_user_registration_path%></li>
+              <% end %>
               <li><%= link_to "About", about_path %></li>
               <!--Find the route below using $ rails routes, where the "new_contact" is the GET method for the /contacts/new page-->
               <li><%= link_to "Contact Us", new_contact_path %></li>
@@ -44,14 +49,13 @@
     <!--There is no "=" after the ruby tag since this should not be output until there is a value in the "type" and "message" values-->
     <!--(Entering a "=" will cause the page to show a blank hash '{}' and to double the alerts rather than only showing once and applying our classes below-->
     <!--'Type' is akin to 'key', and 'msg' is akin to the error 'value'-->
-
     <div class="container">
       <% flash.each do |type, msgs| %>
         <!--'content_tag' allows us to have rails insert an HTML tag (div) into our code-->
         <!--Using string interpolation, you can inject the 'type' into the class to show which class to use based on success or danger-->
-        <% msgs.each do |msg| %>
-          <%= content_tag :div, msg, class: "alert alert-#{type}" %>
-        <% end %>
+
+          <%= content_tag :div, msgs, class: "alert alert-#{type}" %>
+
       <% end %>
     </div>
     
