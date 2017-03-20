@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Adding figaro to the application to handle environmental variables
-gem 'figaro'
+gem 'figaro', '1.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.0'
@@ -41,6 +41,9 @@ gem 'hirb', '0.7.3'
 
 # Use Devise for user authentication
 gem 'devise', '4.2.0'
+
+# Use stripe for payments processing
+gem 'stripe', '1.48.0'
 
 
 group :development, :test do

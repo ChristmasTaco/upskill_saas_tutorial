@@ -4,15 +4,14 @@
       <div class="text-center">
         <% if params[:plan] == "2" %>
           <h1>Pro Account</h1>
-          <h4>Sign up for the pro account for $10/month and get access to the community and contact information</h4>
+          <p>Sign up for the pro account for $10/month and get access to the community and contact information</p>
         <% else %>
           <h1>Basic Account</h1>
-          <h4>Sign up for free and get basic access to the community</h4>
+          <p>Sign up for free and get basic access to the community</p>
         <% end %>
       </div>
       
       <div class="well">
-        
         <!--Grab params Hash from query string and render the correct form by registration type-->
         <% if params[:plan] == '2' %>
           <%= render "pro_form" %>
