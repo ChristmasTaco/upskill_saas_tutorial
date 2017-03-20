@@ -6,6 +6,8 @@ class User < ApplicationRecord
   
   belongs_to :plan
   
+  has_one :profile
+  
   # Make the stripe_card_token available as an attribute
   attr_accessor :stripe_card_token
   # Creating function to be called in registrations_controller for Pro users
