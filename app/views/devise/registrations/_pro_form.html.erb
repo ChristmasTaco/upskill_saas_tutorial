@@ -1,3 +1,4 @@
+<!--Setting an id value for the form to target it with jQuery-->
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: 'pro_form'}) do |f| %>
   <%= devise_error_messages! %>
 
@@ -23,6 +24,7 @@
   
   <div class="form-group">
     <%= label_tag :card_number, "Credit Card Number" %>
+    <!--Using "name: nil" will keep Rails from saving that field to the DB-->
     <%= text_field_tag :card_number, nil, name: nil, class: 'form-control'%>
   </div>
   
