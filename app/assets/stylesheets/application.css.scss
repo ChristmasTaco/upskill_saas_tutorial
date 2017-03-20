@@ -79,6 +79,14 @@ h1, h2, h3 {
 }
 
 // Devise Alert Styles
-.alert-notice {
-    display: none;
+.flash-container {
+  position: absolute;
+  width: 100%;
+}
+.alert-notice, .alert-alert {
+  color: white;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  margin-top: -14px;
 }

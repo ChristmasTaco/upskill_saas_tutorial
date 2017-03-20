@@ -50,19 +50,15 @@
     <!--There is no "=" after the ruby tag since this should not be output until there is a value in the "type" and "message" values-->
     <!--(Entering a "=" will cause the page to show a blank hash '{}' and to double the alerts rather than only showing once and applying our classes below-->
     <!--'Type' is akin to 'key', and 'msg' is akin to the error 'value'-->
-    <div class="container">
+    <div class="container flash-container">
       <% flash.each do |type, msgs| %>
         <!--'content_tag' allows us to have rails insert an HTML tag (div) into our code-->
         <!--Using string interpolation, you can inject the 'type' into the class to show which class to use based on success or danger-->
-
-          <%= content_tag :div, msgs, class: "alert alert-#{type}" %>
-
+        <%= content_tag :div, msgs, class: "alert alert-#{type}" %>
       <% end %>
     </div>
     
-    
     <%= yield %>
-
-  
+    
   </body>
 </html>
