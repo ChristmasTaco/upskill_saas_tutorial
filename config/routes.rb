@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-    devise_for :users
+
     root to: 'pages#home'
+
+    devise_for :users, controllers: { registrations: 'users/registrations' }
+    
     get 'about', to: 'pages#about'
     
     # Creates all CRUD routes for Contacts rather than having to write a line for every permutation, ie get 'contacts/new'
