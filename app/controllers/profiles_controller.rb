@@ -33,6 +33,6 @@ class ProfilesController < ApplicationController
     # This private method can only be used inside of this file
     def profile_params
       # Whitelisting all of the parameters for security
-      params.require(:profile).permit(:first_name, :last_name, :job_title, :phone_number, :contact_email, :description)
+      params.require(:profile).permit(:first_name, :last_name, :avatar, :job_title, :phone_number, :contact_email, :description)
     end
 end

@@ -1,6 +1,7 @@
 <!--We have to specify the URL because this is a nested form for a specific user-->
 <!--On Inspect, the form gets 'action="/users/:user_id/profile"' because of the URL path we set-->
-<%= form_for @profile, url: user_profile_path do |f| %>
+<!--We need "multipart" because we are inputting an image-->
+<%= form_for @profile, url: user_profile_path, :html => { :multipart => true } do |f| %>
   <div class="form-group">
     <%= f.label :first_name %>
     <%= f.text_field :first_name, class: 'form-control' %>
@@ -9,6 +10,11 @@
   <div class="form-group">
     <%= f.label :last_name %>
     <%= f.text_field :last_name, class: 'form-control' %>
+  </div>
+    
+  <div class="form-group">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar, class: 'form-control' %>
   </div>
   
   <div class="form-group">
