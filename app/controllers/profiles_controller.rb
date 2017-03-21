@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
     if @profile.save
       # Generate a flash message to let the user know the save was successful
       flash[:success] = "Profile Updated!"
-      redirect_to root_path
+      redirect_to user_path(params[:user_id])
     else
       # Re-render the form to allow the user to re-submit
       # Render does NOT make a new HTTP request, unlike "redirect_to"

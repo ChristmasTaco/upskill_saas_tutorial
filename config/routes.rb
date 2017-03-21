@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   root to: 'pages#home'
-
+  
+  # Notes the registrations controller will manage user registrations
   devise_for :users, controllers: { registrations: 'users/registrations' }
   
   # nesting the 'profile' resource within the users resource
