@@ -1,4 +1,5 @@
 <!--We have to specify the URL because this is a nested form for a specific user-->
+<!--On Inspect, the form gets 'action="/users/:user_id/profile"' because of the URL path we set-->
 <%= form_for @profile, url: user_profile_path do |f| %>
   <div class="form-group">
     <%= f.label :first_name %>
@@ -12,7 +13,7 @@
   
   <div class="form-group">
     <%= f.label :job_title %>
-    <%= f.select :job_title, ['Developer', 'Entrepreneur', 'Investor'], {}, class: 'form-control' %>
+    <%= f.select :job_title, ['Developer', 'Entrepreneur', 'Investor'], {prompt:"**Please select an option**"}, class: 'form-control' %>
   </div>
   
   <div class="form-group">
@@ -30,5 +31,5 @@
     <%= f.text_area :description, class: 'form-control' %>
   </div>
   
-  <%= f.submit "Create my profile", class: 'btn btn-info btn-lg btn-block' %>
+  <%= f.submit "Update my profile", class: 'btn btn-info btn-lg btn-block' %>
 <% end %>
