@@ -1,16 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <%= @user.profile.inspect %>
-      <%= image_tag @user.profile.avatar.url %>
-      
-      <% if current_user.plan_id == 2 %>
-        <div class="well">
-          <h3 class="text-center">Pro Details</h3>
-          <p class="text-center"><%= @user.profile.phone_number %></p>
-          <p class="text-center"><%= @user.profile.contact_email %></p>
-        </div>
-      <% end %>
+    <div class="col-md-3 text-center">
+      <%= image_tag @user.profile.avatar.url, class: 'avatar-show-img' %>
+    </div>     
+    <div class="col-md-6">
+      <h1><%= @user.profile.first_name %> <%= @user.profile.last_name %></h1>
+      <h3><%= @user.profile.job_title %></h3>
+      <div class="well profile-block">
+        <%= @user.profile.description %>
+      </div>
     </div>
+    
+    <% if false#current_user.plan_id == 2 %>
+      <div class="col-md-3">
+        <h3>Contact Details</h3>
+        <div class="well contact-block">
+          <p><%= @user.profile.phone_number %></p>
+          <p><%= @user.profile.contact_email %></p>
+        </div>
+      </div>
+    <% elsif true #current_user.plan_id == 1 %>
+      <div class="col-md-3">
+        <h3>Contact Details</h3>
+        <div class="well contact-block">
+          <h4>Upgrade to premium to see this user's contact information!</h4>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
