@@ -20,12 +20,37 @@ class ProfilesController < ApplicationController
     if @profile.save
       # Generate a flash message to let the user know the save was successful
       flash[:success] = "Profile Updated!"
-      redirect_to user_path(params[:user_id])
+      redirect_to user_path(id: params[:user_id])
     else
       # Re-render the form to allow the user to re-submit
       # Render does NOT make a new HTTP request, unlike "redirect_to"
       render action: :new
     end
+  end
+  
+  # GET to /users/:user_id/profile/edit
+  def edit
+    # Set the user based on the user_id parameter
+    @user = User.find(params[:user_id])
+    # Define the form data using @profile by assigning it the value of the user's profile
+    @profile = @user.profile
+  end
+  
+  # PATCH to users/:user_id/profile
+  def update
+    # Retrieve user from db
+    @user = User.find(params[:user_id])
+    # Retrieve that user's profile
+    @profile = @user.profile
+    
+    # Mass assign edited profile attributes from whitelisting below
+    if @profile.update_attributes(profile_params)
+      flash[:success] = "Profile has been updated!"
+      redirect_to user_path(id: params[:user_id])
+    else
+      render action: :edit
+    end
+    
   end
   
   private
