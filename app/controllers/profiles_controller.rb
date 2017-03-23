@@ -1,4 +1,10 @@
 class ProfilesController < ApplicationController
+  # Lock down all user pages if not logged-in  
+  before_action :authenticate_user!
+  
+  # Define a method to ensure users can only edit their own profiles
+  before_action :only_current_user
+  
   # GET to /users/:user_id/profile/new
   def new
     @profile = Profile.new
@@ -59,5 +65,14 @@ class ProfilesController < ApplicationController
     def profile_params
       # Whitelisting all of the parameters for security
       params.require(:profile).permit(:first_name, :last_name, :avatar, :job_title, :phone_number, :contact_email, :description)
+    end
+    
+    #Define a method to check that the user is only attempting to edit their own profile page
+    def only_current_user
+      # Identify the currently signed-in user
+      @user = User.find(params[:user_id])
+      
+      # Redirect the user to the homepage unless they are the found user
+      redirect_to(root_url) unless @user == current_user
     end
 end
