@@ -43,6 +43,7 @@ class ProfilesController < ApplicationController
   end
   
   # PATCH to users/:user_id/profile
+  # We use "update" because that's what the rails routes show us: 'users#update'
   def update
     # Retrieve user from db
     @user = User.find(params[:user_id])
