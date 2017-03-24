@@ -65,6 +65,13 @@ h1, h2, h3 {
     }
 }
 
+.navbar-nav > li > a.user-btn {
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 5px;
+}
+
 
 // Homepage styles
 .home-callout {
